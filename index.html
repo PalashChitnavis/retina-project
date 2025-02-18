@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.30.4/cytoscape.min.js"
+      integrity="sha512-xpXUCbrkyJCwC5noJXZqec9rSXdRgFfDoL7Q9/pCPe54Y04OlqwPobMcNuA5NPJ7DRR51OIr6xcOH2wUspyKDQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://unpkg.com/cytoscape-lasso@1.1.4/dist/cytoscape-lasso.min.js"></script>
+
+    <link href="cytoscape.js-panzoom.css" rel="stylesheet" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="cytoscape-panzoom.js"></script>
+    <script src="https://unpkg.com/webcola/WebCola/cola.min.js"></script>
+
+    <title>Document</title>
+  </head>
+  <body>
+    <header>Cytoscape Demo</header>
+    <main>
+      <div class="canvas-container">
+        <div class="cytoscape-canvas" id="cy"></div>
+      </div>
+      <footer class="toolbar">Toolbar</footer>
+      <aside class="sidebar">
+        <input
+          type="text"
+          class="search-feature"
+          placeholder="Search Feature"
+        />
+        <button class="create-button">Create Button</button>
+        <div class="selected-nodes">Selected Nodes</div>
+      </aside>
+    </main>
+    <script type="module" src="./cytoscape.js"></script>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cytoscape Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.30.4/cytoscape.min.js"
+      integrity="sha512-xpXUCbrkyJCwC5noJXZqec9rSXdRgFfDoL7Q9/pCPe54Y04OlqwPobMcNuA5NPJ7DRR51OIr6xcOH2wUspyKDQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://unpkg.com/cytoscape-lasso@1.1.4/dist/cytoscape-lasso.min.js"></script>
+
+    <link href="cytoscape.js-panzoom.css" rel="stylesheet" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="cytoscape-panzoom.js"></script>
+  </head>
+  <body>
+    <header>Cytoscape Demo</header>
+    <main>
+      <div class="canvas-container">
+        <div class="cytoscape-canvas" id="cy"></div>
+      </div>
+      <footer class="toolbar">
+        <div>
+          <button id="reset-everything" class="reset-everything">Reset</button>
+        </div>
+
+        <div class="layout-div">
+          <div>Layout Options:</div>
+          <select name="layout-select" id="layout-select">
+            <option value="preset">Preset</option>
+            <option value="grid">Grid</option>
+            <option value="circle">Circle</option>
+            <option value="concentric">Concentric</option>
+            <option value="cose">Cose</option>
+            <option value="breadthfirst">Breadth First</option>
+            <option value="random">Random</option>
+            <option value="null">Null</option>
+          </select>
+        </div>
+        <div class="lasso-tool">
+          <div class="lasso-tool2">
+            <div>Lasso Tool:</div>
+            <input type="checkbox" id="lasso-value" />
+          </div>
+          <div>(&#8984; Cmd or &#8679; Shift + Drag)</div>
+        </div>
+        <div class="element-info">
+          <div id="element-label">Element Info:</div>
+          <div id="element"></div>
+        </div>
+      </footer>
+      <aside class="sidebar">
+        <input
+          type="text"
+          class="search-feature"
+          placeholder="Search Feature"
+        />
+        <button class="create-button">Create Button</button>
+        <div class="selected-nodes">Selected Nodes</div>
+      </aside>
+    </main>
+    <script type="module" src="./cytoscape.js"></script>
+  </body>
+</html>
