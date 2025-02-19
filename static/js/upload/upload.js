@@ -64,7 +64,7 @@ input.addEventListener("change", function (e) {
         return result;
       }
       const randomString = generateRandomString(5);
-      localStorage.setItem(randomString, JSON.stringify(data));
+      sessionStorage.setItem(randomString, JSON.stringify(data));
       window.location.href = `/graph?val=${randomString}`;
     });
   });

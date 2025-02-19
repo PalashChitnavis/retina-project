@@ -2,7 +2,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const val = urlParams.get("val");
 console.log("Random String:", val);
 
-const data = localStorage.getItem(val);
+const data = sessionStorage.getItem(val);
 
 //console.log(data);
 
@@ -318,7 +318,7 @@ document.getElementById("create-subgraph").addEventListener("click", () => {
     return result;
   }
   const randomString = generateRandomString(5);
-  localStorage.setItem(randomString, JSON.stringify(subgraphData));
+  sessionStorage.setItem(randomString, JSON.stringify(subgraphData));
   const baseUrl = window.location.origin;
   const newUrl = `${baseUrl}/graph?val=${randomString}`;
   window.open(newUrl, "_blank");
