@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Upload</title>
+    <link rel="stylesheet" href="../static/css/upload/upload.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <h3>Upload Files</h3>
+        <div class="drop_box">
+          <header>
+            <h4>Select File here</h4>
+          </header>
+          <p>Files Supported: JSON, CSV, XLS, XLSX, XML</p>
+          <input type="file" hidden accept=".json,.csv,.xls,.xlsx,.xml" />
+          <button class="btn">Choose File</button>
+        </div>
+      </div>
+    </div>
+    <script src="../static/js/upload/upload.js"></script>
+  </body>
+</html>

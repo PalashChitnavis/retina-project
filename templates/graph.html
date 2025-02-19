@@ -3,9 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cytoscape Demo</title>
-    <link rel="stylesheet" href="styles.css" />
-
+    <title>Cytoscape Graph</title>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.30.4/cytoscape.min.js"
       integrity="sha512-xpXUCbrkyJCwC5noJXZqec9rSXdRgFfDoL7Q9/pCPe54Y04OlqwPobMcNuA5NPJ7DRR51OIr6xcOH2wUspyKDQ=="
@@ -13,8 +11,6 @@
       referrerpolicy="no-referrer"
     ></script>
     <script src="https://unpkg.com/cytoscape-lasso@1.1.4/dist/cytoscape-lasso.min.js"></script>
-
-    <link href="cytoscape.js-panzoom.css" rel="stylesheet" type="text/css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -23,8 +19,15 @@
       referrerpolicy="no-referrer"
     />
 
+    <link
+      href="../static/css/graph/cytoscape.js-panzoom.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="../static/css/graph/styles.css" />
+
     <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-    <script src="cytoscape-panzoom.js"></script>
+    <script src="../static/js/graph/cytoscape-panzoom.js"></script>
   </head>
   <body>
     <div class="overlay hidden" id="overlay">
@@ -128,6 +131,6 @@
       }
       document.body.classList.add("modal-open");
     </script>
-    <script type="module" src="./cytoscape.js"></script>
+    <script type="module" src="../static/js/graph/cytoscape.js"></script>
   </body>
 </html>

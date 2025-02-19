@@ -1,8 +1,8 @@
-import data1 from './dataType1.json' with {type: 'json'};
-import data2 from './dataType2.json' with {type: 'json'};
+import data1 from '../../data/dataType1.json' with {type: 'json'};
+import data2 from '../../data/dataType2.json' with {type: 'json'};
 import dataValidator from "./dataValidator.js";
-import test from './test.json' with {type: 'json'};
-const data = test;
+import test from '../../data/test.json' with {type: 'json'};
+const data = data2;
 
 const graphData = dataValidator(data);
 
@@ -203,7 +203,7 @@ document.getElementById('upload-graph').addEventListener('click',()=>{
   // Get the current base URL
   const baseUrl = window.location.origin; // e.g., "https://example.com"
   // Append "/upload" to the base URL
-  const newUrl = `${baseUrl}/upload.html`;
+  const newUrl = `${baseUrl}/upload`;
   // Open the new URL in a new tab
   window.open(newUrl, '_blank');
 })
