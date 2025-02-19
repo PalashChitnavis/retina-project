@@ -1,0 +1,172 @@
+{
+  "elements": {
+    "nodes": [
+      {
+        "data": {
+          "id": "5197",
+          "station_name": "竹ノ塚",
+          "close_ymd": "",
+          "lon": 139.790788,
+          "post": "121-0813",
+          "e_status": 0,
+          "SUID": 5197,
+          "station_g_cd": 2100214,
+          "add": "足立区竹の塚６丁目",
+          "line_cd": 21002,
+          "selected": false,
+          "open_ymd": "",
+          "name": "2100214",
+          "pref_name": "東京都",
+          "shared_name": "2100214",
+          "lat": 35.794368,
+          "y": -357943.68,
+          "x": 1397907.88
+        },
+        "position": {
+          "x": 1397907.88,
+          "y": -357943.68
+        }
+      },
+      {
+        "data": {
+          "id": "7721",
+          "station_name": "谷在家",
+          "close_ymd": "",
+          "lon": 139.770043,
+          "post": "123-0863",
+          "e_status": 0,
+          "SUID": 7721,
+          "station_g_cd": 9934210,
+          "add": "足立区谷在家３-２０-２３",
+          "line_cd": 99342,
+          "selected": false,
+          "open_ymd": "",
+          "name": "9934210",
+          "pref_name": "東京都",
+          "shared_name": "9934210",
+          "lat": 35.788774,
+          "y": -357887.74,
+          "x": 1397700.43
+        },
+        "position": {
+          "x": 1397700.43,
+          "y": -357887.74
+        }
+      },
+      {
+        "data": {
+          "id": "5196",
+          "station_name": "西新井",
+          "close_ymd": "",
+          "lon": 139.790372,
+          "post": "123-0843",
+          "e_status": 0,
+          "SUID": 5196,
+          "station_g_cd": 2100213,
+          "add": "足立区西新井栄町２丁目",
+          "line_cd": 21002,
+          "selected": false,
+          "open_ymd": "",
+          "name": "2100213",
+          "pref_name": "東京都",
+          "shared_name": "2100213",
+          "lat": 35.777322999999996,
+          "y": -357773.23,
+          "x": 1397903.72
+        },
+        "position": {
+          "x": 1397903.72,
+          "y": -357773.23
+        }
+      },
+      {
+        "data": {
+          "id": "7720",
+          "station_name": "西新井大師西",
+          "close_ymd": "",
+          "lon": 139.770094,
+          "post": "123-0872",
+          "e_status": 0,
+          "SUID": 7720,
+          "station_g_cd": 9934209,
+          "add": "足立区江北６-３０-２３",
+          "line_cd": 99342,
+          "selected": false,
+          "open_ymd": "",
+          "name": "9934209",
+          "pref_name": "東京都",
+          "shared_name": "9934209",
+          "lat": 35.781504999999996,
+          "y": -357815.04999999993,
+          "x": 1397700.94
+        },
+        "position": {
+          "x": 1397700.94,
+          "y": -357815.04999999993
+        }
+      }
+    ],
+    "edges": [
+      {
+        "data": {
+          "id": "15600",
+          "source": "5196",
+          "target": "5197",
+          "line_name_k": "トウブイセサキセン",
+          "is_bullet": false,
+          "lon": 139.49934131661746,
+          "company_name_k": "トウブテツドウ",
+          "zoom": 10,
+          "SUID": 15600,
+          "company_type": 2,
+          "company_name_h": "東武鉄道株式会社",
+          "interaction": "21002",
+          "shared_interaction": "21002",
+          "company_url": "http://www.tobu.co.jp/",
+          "line_name": "東武伊勢崎線",
+          "selected": false,
+          "company_name": "東武鉄道",
+          "company_cd": 11,
+          "name": "2100213 (21002) 2100214",
+          "rr_cd": 21,
+          "company_name_r": "東武",
+          "e_status_x": 0,
+          "shared_name": "2100213 (21002) 2100214",
+          "lat": 36.05676642458757,
+          "e_status_y": 0,
+          "line_name_h": "東武伊勢崎線"
+        }
+      },
+      {
+        "data": {
+          "id": "17953",
+          "source": "7720",
+          "target": "7721",
+          "line_name_k": "ニッポリ・トネリライナー",
+          "is_bullet": false,
+          "lon": 139.76949647740912,
+          "company_name_k": "トウキョウトコウツウキョク",
+          "zoom": 12,
+          "SUID": 17953,
+          "company_type": 0,
+          "company_name_h": "東京都交通局",
+          "interaction": "99342",
+          "shared_interaction": "99342",
+          "company_url": "http://www.kotsu.metro.tokyo.jp/",
+          "line_name": "日暮里・舎人ライナー",
+          "selected": false,
+          "company_name": "東京都交通局",
+          "company_cd": 119,
+          "name": "9934209 (99342) 9934210",
+          "rr_cd": 99,
+          "company_name_r": "東京都交通局",
+          "e_status_x": 0,
+          "shared_name": "9934209 (99342) 9934210",
+          "lat": 35.78182568612205,
+          "e_status_y": 0,
+          "line_name_h": "日暮里・舎人ライナー"
+        }
+      }
+    ]
+  }
+}

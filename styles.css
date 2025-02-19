@@ -21,7 +21,7 @@ main {
 }
 
 .canvas-container {
-  flex: 2;
+  flex: 3; /* 60% of the screen width */
   background: lightgray;
   display: flex;
   align-items: center;
@@ -38,68 +38,271 @@ main {
 .toolbar {
   background: #333;
   color: white;
-  text-align: center;
-  padding: 10px;
-  flex: 0.5;
-}
-
-.sidebar {
-  flex: 1;
   display: flex;
   flex-direction: column;
+  padding: 10px;
+  flex: 1; /* 20% of the screen width */
   gap: 10px;
 }
 
-.search-feature,
+.sidebar {
+  flex: 1; /* 20% of the screen width */
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.create-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.input-sec,
 .selected-nodes,
 .create-button {
   padding: 10px;
   border: 1px solid #ccc;
   text-align: center;
+  background: #444;
+  color: white;
+  border-radius: 5px;
+}
+
+.search-feature {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: larger;
+  font-weight: 700;
+}
+
+.create-button {
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.create-button:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+.reset-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .reset-everything {
   padding: 10px;
   border: 1px solid #ccc;
   text-align: center;
-  background-color: red;
+  width: 50%;
+  border-radius: 5px;
+  background-color: rgb(174, 0, 0);
   color: white;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.reset-everything:hover {
+  background-color: #ff1a1a;
+  box-shadow: 0 4px 8px rgba(255, 0, 0, 0.3);
 }
 
 .layout-div {
   display: flex;
   flex-direction: column;
+  gap: 5px;
+  background: #444;
+  padding: 10px;
+  border-radius: 5px;
 }
 
-.lasso-tool {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.layout-div select {
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  background: #555;
+  color: white;
 }
 
-.lasso-tool2 {
+.lasso-tool,
+.panning-tool,
+.zooming-tool,
+.box-tool,
+.lock-tool,
+.node-color-tool,
+.edge-color-tool {
   display: flex;
   flex-direction: row;
+  gap: 5px;
+  background: #444;
+  padding: 10px;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
+}
+
+.node-color-tool input,
+.edge-color-tool input {
+  width: 30%;
+  border-radius: 5px;
+}
+
+.lasso-tool input,
+.panning-tool input,
+.box-tool input,
+.lock-tool input,
+.zooming-tool input {
+  cursor: pointer;
+}
+
+.element-info {
+  background: #444;
+  height: 200px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#element-label {
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 #element {
-  max-height: 100px; /* Fixed height */
-  overflow-y: auto; /* Enable vertical scroll */
+  height: 150px;
+  max-height: 200px;
+  overflow-y: auto;
   margin-top: 5px;
+  background: #555;
+  padding: 10px;
+  border-radius: 5px;
 }
 
-/* Table styles */
 #element table {
   width: 100%;
   border-collapse: collapse;
 }
 
 #element table td {
-  padding: 5px;
-  border: 1px solid #ddd;
+  padding: 8px;
+  border: 1px solid #666;
+  font-size: 14px;
+}
+
+.end-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.end-buttons button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.end-buttons button:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(
+    211,
+    211,
+    211,
+    0.95
+  ); /* Light gray with slight transparency */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: red;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Buttons */
+.download-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 200px;
+  text-align: center;
+}
+
+.download-btn:hover {
+  background: #0056b3;
+}
+
+/* Prevent interactions with background */
+body.modal-open {
+  overflow: hidden;
+}
+
+.hidden {
+  display: none;
+}
+
+.selected-label {
+  border: 2px solid white;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: black;
+}
+
+.selected-nodes {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  height: 300px;
+  max-height: 500px;
+}
+
+.selected-nodes-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 300px;
+  max-height: 300px;
+  overflow-y: auto;
 }
 
 /* Mobile Design */
@@ -107,16 +310,48 @@ main {
   main {
     flex-direction: column;
   }
-  .toolbar {
-    order: 2; /* Moves the toolbar below the Cytoscape Canvas */
-  }
-  .sidebar {
-    order: 3;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+
   .canvas-container {
+    flex: 2;
     height: 50vh;
+  }
+
+  .toolbar {
+    flex: 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .sidebar {
+    flex: 1;
+  }
+
+  .reset-button,
+  .layout-div {
+    flex: 1 1 100%;
+  }
+
+  .lasso-tool,
+  .panning-tool,
+  .zooming-tool,
+  .box-tool,
+  .lock-tool,
+  .node-color-tool,
+  .edge-color-tool {
+    flex: 1 1 45%;
+  }
+
+  .element-info {
+    flex: 1 1 100%;
+  }
+
+  .end-buttons {
+    flex-direction: row;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
   }
 }

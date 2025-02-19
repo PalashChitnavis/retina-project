@@ -27,13 +27,19 @@
     <script src="cytoscape-panzoom.js"></script>
   </head>
   <body>
+    <div class="overlay hidden" id="overlay">
+      <button class="close-btn" onclick="closeOverlay()">X</button>
+      <button class="download-btn" id="png">Download PNG</button>
+      <button class="download-btn" id="jpg">Download JPG</button>
+      <button class="download-btn" id="json">Download JSON</button>
+    </div>
     <header>Cytoscape Demo</header>
     <main>
       <div class="canvas-container">
         <div class="cytoscape-canvas" id="cy"></div>
       </div>
       <footer class="toolbar">
-        <div>
+        <div class="reset-button">
           <button id="reset-everything" class="reset-everything">Reset</button>
         </div>
 
@@ -50,28 +56,78 @@
             <option value="null">Null</option>
           </select>
         </div>
-        <div class="lasso-tool">
-          <div class="lasso-tool2">
-            <div>Lasso Tool:</div>
-            <input type="checkbox" id="lasso-value" />
-          </div>
+        <div class="node-color-tool">
+          <div>Node Color :</div>
+          <input type="color" id="node-color-value" value="#af0001" />
+        </div>
+        <div class="edge-color-tool">
+          <div>Edge Color :</div>
+          <input type="color" id="edge-color-value" value="#008032" />
+        </div>
+        <div class="box-tool">
+          <div>Box Selection :</div>
+          <input type="checkbox" id="box-value" checked />
           <div>(&#8984; Cmd or &#8679; Shift + Drag)</div>
+        </div>
+        <div class="lasso-tool">
+          <div>Lasso Tool :</div>
+          <input type="checkbox" id="lasso-value" />
+          <div>(&#8984; Cmd or &#8679; Shift + Drag)</div>
+        </div>
+        <div class="panning-tool">
+          <div>Panning :</div>
+          <input type="checkbox" checked id="panning-value" />
+          <div>Enable/Disable Panning.</div>
+        </div>
+        <div class="zooming-tool">
+          <div>Zooming :</div>
+          <input type="checkbox" checked id="zooming-value" />
+          <div>Enable/Disable Zooming.</div>
+        </div>
+        <div class="lock-tool">
+          <div>Lock Nodes :</div>
+          <input type="checkbox" id="lock-value" />
+          <div>Lock/Unlock Nodes.</div>
         </div>
         <div class="element-info">
           <div id="element-label">Element Info:</div>
           <div id="element"></div>
         </div>
+        <div class="end-buttons">
+          <button id="upload-graph">Upload New Graph</button>
+          <button id="download">Download Current Graph</button>
+        </div>
       </footer>
       <aside class="sidebar">
-        <input
-          type="text"
-          class="search-feature"
-          placeholder="Search Feature"
-        />
-        <button class="create-button">Create Button</button>
-        <div class="selected-nodes">Selected Nodes</div>
+        <div class="input-sec">
+          <input
+            id="search"
+            type="text"
+            class="search-feature"
+            placeholder="Search Nodes By ID"
+          />
+          <div class="searched-element" id="searched-element"></div>
+        </div>
+        <div>
+          <div class="selected-nodes">
+            <div class="selected-label">Selected Nodes are displayed here.</div>
+            <div class="selected-nodes-area" id="selected-nodes-area"></div>
+          </div>
+          <button id="create-subgraph" class="create-button">
+            Create Subgraph of Selected Nodes, Connecting Edges and First Degree
+            Neighbors
+          </button>
+        </div>
       </aside>
     </main>
+
+    <script>
+      function closeOverlay() {
+        document.getElementById("overlay").className = "overlay hidden";
+        document.body.classList.remove("modal-open");
+      }
+      document.body.classList.add("modal-open");
+    </script>
     <script type="module" src="./cytoscape.js"></script>
   </body>
 </html>
