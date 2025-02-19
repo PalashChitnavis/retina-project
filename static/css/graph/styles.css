@@ -313,7 +313,11 @@ body.modal-open {
 
   .canvas-container {
     flex: 2;
-    height: 50vh;
+    height: 40vh;
+  }
+
+  .cytoscape-canvas {
+    height: 40vh;
   }
 
   .toolbar {
