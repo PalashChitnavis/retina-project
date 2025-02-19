@@ -1,9 +1,7 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for
 import os
 
 app = Flask(__name__)
-
-DATA_FOLDER = os.path.join(os.getcwd(), 'data')
 
 @app.route('/')
 def home():

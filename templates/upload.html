@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <title>File Upload</title>
     <link rel="stylesheet" href="../static/css/upload/upload.css" />
   </head>
@@ -14,12 +15,12 @@
           <header>
             <h4>Select File here</h4>
           </header>
-          <p>Files Supported: JSON, CSV, XLS, XLSX, XML</p>
-          <input type="file" hidden accept=".json,.csv,.xls,.xlsx,.xml" />
+          <p>Files Supported: JSON, XLSX, SIF, TXT</p>
+          <input type="file" hidden accept=".json,.sif,.txt,.xlsx" />
           <button class="btn">Choose File</button>
         </div>
       </div>
     </div>
-    <script src="../static/js/upload/upload.js"></script>
+    <script type="module" src="../static/js/upload/upload.js"></script>
   </body>
 </html>

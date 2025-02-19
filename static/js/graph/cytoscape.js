@@ -1,54 +1,58 @@
-import data1 from '../../data/dataType1.json' with {type: 'json'};
-import data2 from '../../data/dataType2.json' with {type: 'json'};
-import dataValidator from "./dataValidator.js";
-import test from '../../data/test.json' with {type: 'json'};
-const data = data2;
+const urlParams = new URLSearchParams(window.location.search);
+const val = urlParams.get("val");
+console.log("Random String:", val);
 
-const graphData = dataValidator(data);
+const data = localStorage.getItem(val);
+
+//console.log(data);
+
+const graphData = data ? JSON.parse(data) : { elements: [] };
+
+console.log(graphData);
 
 var cy = cytoscape({
   container: document.getElementById("cy"),
-  elements: graphData,
+  elements: graphData.elements,
   layout: {
     name: "preset",
   },
   style: [
     {
-      selector: 'node',
+      selector: "node",
       style: {
-        'background-color': '#af0001',
-        'label': 'data(id)',
-        'text-valign': 'center',
-        'text-halign': 'center',
-        'color': '#fff',
-        'width': 40,
-        'height': 40
-      }
+        "background-color": "#af0001",
+        label: "data(id)",
+        "text-valign": "center",
+        "text-halign": "center",
+        color: "#fff",
+        width: 40,
+        height: 40,
+      },
     },
     {
-      selector: 'node:selected', 
+      selector: "node:selected",
       style: {
-        'background-color': 'blue', 
-        'border-width': 2,
-        'border-color': '#fff' 
-      }
+        "background-color": "blue",
+        "border-width": 2,
+        "border-color": "#fff",
+      },
     },
     {
-      selector: 'edge',
+      selector: "edge",
       style: {
-        'line-color': '#008032',
-        'width': 5,
-        'curve-style': 'bezier'
-      }
+        "line-color": "#008032",
+        width: 5,
+        "curve-style": "bezier",
+      },
     },
     {
-      selector: 'edge:selected', 
+      selector: "edge:selected",
       style: {
-        'line-color': 'orange', 
-        'width': 7
-      }
-    }
-  ]
+        "line-color": "orange",
+        width: 7,
+      },
+    },
+  ],
 });
 
 cy.userPanningEnabled(true);
@@ -61,74 +65,78 @@ cy.lassoSelectionEnabled(false);
 
 cy.autolock(false);
 
-document.getElementById('layout-select').addEventListener('change',(event)=>{
+document.getElementById("layout-select").addEventListener("change", (event) => {
   cy.layout({ name: event.target.value }).run();
-})
+});
 
-document.getElementById('reset-everything').addEventListener('click',()=>{
+document.getElementById("reset-everything").addEventListener("click", () => {
   window.location.reload();
-})
+});
 
-document.getElementById('lasso-value').addEventListener('change', (event) => {
+document.getElementById("lasso-value").addEventListener("change", (event) => {
   const isChecked = event.target.checked;
-  cy.lassoSelectionEnabled(isChecked)
-  document.getElementById('box-value').checked = !isChecked;
-  cy.boxSelectionEnabled(!isChecked)
+  cy.lassoSelectionEnabled(isChecked);
+  document.getElementById("box-value").checked = !isChecked;
+  cy.boxSelectionEnabled(!isChecked);
 });
 
-document.getElementById('panning-value').addEventListener('change', (event) => {
+document.getElementById("panning-value").addEventListener("change", (event) => {
   const isChecked = event.target.checked;
-  cy.userPanningEnabled(isChecked)
+  cy.userPanningEnabled(isChecked);
 });
 
-document.getElementById('zooming-value').addEventListener('change', (event) => {
+document.getElementById("zooming-value").addEventListener("change", (event) => {
   const isChecked = event.target.checked;
-  cy.zoomingEnabled(isChecked)
+  cy.zoomingEnabled(isChecked);
 });
 
-document.getElementById('box-value').addEventListener('change', (event) => {
+document.getElementById("box-value").addEventListener("change", (event) => {
   const isChecked = event.target.checked;
-  cy.boxSelectionEnabled(isChecked)
-  document.getElementById('lasso-value').checked = !isChecked;
-  cy.lassoSelectionEnabled(!isChecked)
+  cy.boxSelectionEnabled(isChecked);
+  document.getElementById("lasso-value").checked = !isChecked;
+  cy.lassoSelectionEnabled(!isChecked);
 });
 
-document.getElementById('lock-value').addEventListener('change', (event) => {
+document.getElementById("lock-value").addEventListener("change", (event) => {
   const isChecked = event.target.checked;
-  cy.autolock(isChecked)
+  cy.autolock(isChecked);
 });
 
-document.getElementById('node-color-value').addEventListener('change', (event) => {
-  const color = event.target.value;
-  cy.nodes().style({'background-color': color})
-});
+document
+  .getElementById("node-color-value")
+  .addEventListener("change", (event) => {
+    const color = event.target.value;
+    cy.nodes().style({ "background-color": color });
+  });
 
-document.getElementById('edge-color-value').addEventListener('change', (event) => {
-  const color = event.target.value;
-  cy.edges().style({'line-color': color})
-});
+document
+  .getElementById("edge-color-value")
+  .addEventListener("change", (event) => {
+    const color = event.target.value;
+    cy.edges().style({ "line-color": color });
+  });
 
-cy.on('tap','node,edge', function(evt){
+cy.on("tap", "node,edge", function (evt) {
   var element = evt.target;
   const elementData = element.data();
-  const elementDiv = document.getElementById('element');
-  const elementLabel = document.getElementById('element-label');
-  
-  elementDiv.innerHTML = '';
+  const elementDiv = document.getElementById("element");
+  const elementLabel = document.getElementById("element-label");
+
+  elementDiv.innerHTML = "";
 
   // Create a table
-  const table = document.createElement('table');
+  const table = document.createElement("table");
 
   // Iterate over the object and add rows to the table
   for (const [key, value] of Object.entries(elementData)) {
-    const row = document.createElement('tr');
+    const row = document.createElement("tr");
     // Create key cell
-    const keyCell = document.createElement('td');
+    const keyCell = document.createElement("td");
     keyCell.textContent = key;
     row.appendChild(keyCell);
 
     // Create value cell
-    const valueCell = document.createElement('td');
+    const valueCell = document.createElement("td");
     valueCell.textContent = value;
     row.appendChild(valueCell);
 
@@ -137,18 +145,18 @@ cy.on('tap','node,edge', function(evt){
   }
   // Append the table to the element div
   elementDiv.append(table);
-  elementLabel.textContent = element.isNode() ? 'Node Data:' : 'Edge Data:';
+  elementLabel.textContent = element.isNode() ? "Node Data:" : "Edge Data:";
 });
 
 function updateSelectedItemsDisplay() {
-  const selectedItemsElement = document.getElementById('selected-nodes-area');
-  const selectedNodes = cy.$(':selected');
-  // Clear existing content 
-  selectedItemsElement.innerHTML = '';
+  const selectedItemsElement = document.getElementById("selected-nodes-area");
+  const selectedNodes = cy.$(":selected");
+  // Clear existing content
+  selectedItemsElement.innerHTML = "";
 
   // Iterate through selected nodes
-  selectedNodes.forEach(node => {
-    if(node.isEdge()) return
+  selectedNodes.forEach((node) => {
+    if (node.isEdge()) return;
     // Create a container div for the node
     const nodeDiv = document.createElement("div");
     nodeDiv.style.display = "flex"; // Flexbox for alignment
@@ -194,49 +202,49 @@ function updateSelectedItemsDisplay() {
 }
 
 // Event listeners for selection and deselection
-cy.on('select', 'node', updateSelectedItemsDisplay);
-cy.on('unselect', 'node', updateSelectedItemsDisplay);
+cy.on("select", "node", updateSelectedItemsDisplay);
+cy.on("unselect", "node", updateSelectedItemsDisplay);
 
-cy.panzoom()
+cy.panzoom();
 
-document.getElementById('upload-graph').addEventListener('click',()=>{
+document.getElementById("upload-graph").addEventListener("click", () => {
   // Get the current base URL
   const baseUrl = window.location.origin; // e.g., "https://example.com"
   // Append "/upload" to the base URL
   const newUrl = `${baseUrl}/upload`;
   // Open the new URL in a new tab
-  window.open(newUrl, '_blank');
-})
+  window.open(newUrl, "_blank");
+});
 
-document.getElementById('download').addEventListener('click',()=>{
-  document.getElementById('overlay').className = 'overlay';
-})
+document.getElementById("download").addEventListener("click", () => {
+  document.getElementById("overlay").className = "overlay";
+});
 
-document.getElementById('png').addEventListener('click',()=>{
+document.getElementById("png").addEventListener("click", () => {
   const imageData = cy.png({ full: true, output: "png" });
-        const link = document.createElement("a");
-        link.href = imageData;
-        link.download = `graph.png`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-  
-  document.getElementById('overlay').className = 'overlay hidden';
-})
+  const link = document.createElement("a");
+  link.href = imageData;
+  link.download = `graph.png`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 
-document.getElementById('jpg').addEventListener('click',()=>{
+  document.getElementById("overlay").className = "overlay hidden";
+});
+
+document.getElementById("jpg").addEventListener("click", () => {
   const imageData = cy.png({ full: true, output: "jpeg" });
-        const link = document.createElement("a");
-        link.href = imageData;
-        link.download = `graph.jpeg`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-  
-  document.getElementById('overlay').className = 'overlay hidden';
-})
+  const link = document.createElement("a");
+  link.href = imageData;
+  link.download = `graph.jpeg`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 
-document.getElementById('json').addEventListener('click',()=>{
+  document.getElementById("overlay").className = "overlay hidden";
+});
+
+document.getElementById("json").addEventListener("click", () => {
   const jsonData = JSON.stringify(cy.json(), null, 2);
   const blob = new Blob([jsonData], { type: "application/json" });
   const link = document.createElement("a");
@@ -245,9 +253,9 @@ document.getElementById('json').addEventListener('click',()=>{
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
-  
-  document.getElementById('overlay').className = 'overlay hidden';
-})
+
+  document.getElementById("overlay").className = "overlay hidden";
+});
 
 document.getElementById("create-subgraph").addEventListener("click", () => {
   const selectedNodes = cy.$(":selected");
@@ -255,53 +263,78 @@ document.getElementById("create-subgraph").addEventListener("click", () => {
   const nodeIDs = new Set();
   let nodeData = [];
   let edgeData = [];
-  selectedNodes.forEach(node => {
-    if(node.isEdge()) return;
-    nodeData.push({data : node.data() , position : {
-      x : node.position().x,
-      y : node.position().y
-    }});
+  selectedNodes.forEach((node) => {
+    if (node.isEdge()) return;
+    nodeData.push({
+      data: node.data(),
+      position: {
+        x: node.position().x,
+        y: node.position().y,
+      },
+    });
     nodeIDs.add(node.id());
   });
-  selectedEdges.forEach(edge => {
-    if(edge.isNode()) return
+  selectedEdges.forEach((edge) => {
+    if (edge.isNode()) return;
     const sourceNode = cy.$(`#${edge.data().source}`);
     const targetNode = cy.$(`#${edge.data().target}`);
-    if(!nodeIDs.has(sourceNode.id())){
-      console.log(sourceNode.id() + " not found")
-      nodeData.push({data : sourceNode.data() , position : {
-        x : sourceNode.position().x,
-        y : sourceNode.position().y
-      }});
+    if (!nodeIDs.has(sourceNode.id())) {
+      console.log(sourceNode.id() + " not found");
+      nodeData.push({
+        data: sourceNode.data(),
+        position: {
+          x: sourceNode.position().x,
+          y: sourceNode.position().y,
+        },
+      });
     }
-    if(!nodeIDs.has(targetNode.id())){
-      console.log(targetNode.id() + " not found")
-      nodeData.push({data : targetNode.data() , position : {
-        x : targetNode.position().x,
-        y : targetNode.position().y
-      }});
+    if (!nodeIDs.has(targetNode.id())) {
+      console.log(targetNode.id() + " not found");
+      nodeData.push({
+        data: targetNode.data(),
+        position: {
+          x: targetNode.position().x,
+          y: targetNode.position().y,
+        },
+      });
     }
-    edgeData.push({data : edge.data()});
+    edgeData.push({ data: edge.data() });
   });
   const subgraphData = {
     elements: {
       nodes: nodeData,
-      edges: edgeData
-    }
+      edges: edgeData,
+    },
   };
 
-  console.log(subgraphData)
+  function generateRandomString(length) {
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let result = "";
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
+  const randomString = generateRandomString(5);
+  localStorage.setItem(randomString, JSON.stringify(subgraphData));
+  const baseUrl = window.location.origin;
+  const newUrl = `${baseUrl}/graph?val=${randomString}`;
+  window.open(newUrl, "_blank");
 });
 
-document.getElementById('search').addEventListener('input', (event) => {
-
-  const searchedContainer = document.querySelector('.searched-element');
-  searchedContainer.innerHTML = ''; // Clear previous results
+document.getElementById("search").addEventListener("input", (event) => {
+  const searchedContainer = document.querySelector(".searched-element");
+  searchedContainer.innerHTML = ""; // Clear previous results
 
   // Split input by comma, trim spaces, and filter out empty values
-  const searchValues = event.target.value.split(',').map(val => val.trim()).filter(val => val !== '');
+  const searchValues = event.target.value
+    .split(",")
+    .map((val) => val.trim())
+    .filter((val) => val !== "");
 
-  searchValues.forEach(value => {
+  searchValues.forEach((value) => {
     const node = cy.getElementById(value);
 
     if (node.length > 0 && node.isNode()) {
