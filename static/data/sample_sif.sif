@@ -1,5 +1,5 @@
 A activates B
-B C
+B inhibits C
 C interacts D
 D activates A
 E inhibits F
